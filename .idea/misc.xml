@@ -23,19 +23,28 @@
         <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/drawable/steam_air.xml" value="0.26614583333333336" />
         <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/drawable/sunrise.xml" value="0.26614583333333336" />
         <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/drawable/sunset.xml" value="0.26614583333333336" />
+        <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/drawable/temperature_feels_like.xml" value="0.26614583333333336" />
         <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/drawable/umbrella.xml" value="0.26614583333333336" />
         <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/drawable/uv_index.xml" value="0.26614583333333336" />
         <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/drawable/visibility.xml" value="0.26614583333333336" />
+        <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/drawable/wi_dust_wind.xml" value="0.26614583333333336" />
+        <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/drawable/wi_windsock.xml" value="0.26614583333333336" />
         <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/layout/added_location_item_layout.xml" value="0.25" />
         <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/layout/added_locations_item_layout.xml" value="0.25" />
-        <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/layout/current_detail_item_layout.xml" value="0.6" />
+        <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/layout/current_detail_item_layout.xml" value="0.264" />
         <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/layout/edit_location_item_layout.xml" value="0.25" />
+        <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/layout/fragment_daily_large_detail.xml" value="0.25" />
         <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/layout/fragment_edit_location.xml" value="0.264" />
+        <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/layout/fragment_hourly_large_detail.xml" value="0.25" />
+        <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/layout/fragment_hourly_show_detail.xml" value="0.264" />
         <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/layout/fragment_main.xml" value="0.25" />
         <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/layout/fragment_search.xml" value="0.264" />
-        <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/layout/hourly_daily_detail_item_layout.xml" value="0.6" />
+        <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/layout/hourly_daily_detail_item_layout.xml" value="0.5305466237942122" />
         <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/layout/hourly_detail_item_layout.xml" value="0.72" />
+        <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/layout/hourly_show_detail_item_layout.xml" value="0.25" />
+        <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/layout/hourly_show_detail_pager_layout.xml" value="0.264" />
+        <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/layout/main_pager_layout.xml" value="0.264" />
         <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/layout/search_results_item_layout.xml" value="0.25" />
         <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/layout/view_pager_item_layout.xml" value="0.25" />
         <entry key="..\:/PROEKT/Android Studio/Weather/app/src/main/res/menu/menu.xml" value="0.25" />
