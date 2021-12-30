@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.x.a_technologies.weather.datas.CitiesData
 import com.x.a_technologies.weather.datas.DatasCityLocationAPI.CityLocation
-import com.x.a_technologies.weather.datas.SettingsData
+import com.x.a_technologies.weather.datas.PublicDatas
 import com.x.a_technologies.weather.databinding.SearchResultsItemLayoutBinding
 
 interface SearchCallBack{
@@ -25,15 +25,17 @@ class SearchResultsAdapter(val cityLocationList: List<CityLocation>, val callBac
         holder.binding.cityAndCountryName.text = "${item.adminDivision1.name}/${item.country.name}"
 
         holder.binding.resultItem.setOnClickListener {
-            SettingsData.citiesList.add(CitiesData(
+            PublicDatas.citiesList.add(0,CitiesData(
                 item.name,
                 item.adminDivision1.name,
                 item.country.name,
                 item.coordinates.latitude,
                 item.coordinates.longitude))
+            PublicDatas.weatherData.add(0,null)
 
             callBack.setFragment()
         }
+
     }
 
     override fun getItemCount(): Int {

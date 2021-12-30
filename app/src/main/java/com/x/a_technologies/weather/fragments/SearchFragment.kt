@@ -1,29 +1,29 @@
 package com.x.a_technologies.weather.fragments
 
 import android.content.Context
-import android.content.Context.MODE_PRIVATE
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
+import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.core.widget.addTextChangedListener
-import com.google.gson.Gson
 import com.x.a_technologies.weather.api.API
 import com.x.a_technologies.weather.datas.DatasCityLocationAPI.CityLocation
-import com.x.a_technologies.weather.datas.SettingsData
+import com.x.a_technologies.weather.datas.PublicDatas
 import com.x.a_technologies.weather.R
 import com.x.a_technologies.weather.adapters.searchFragmentAdapters.SearchCallBack
 import com.x.a_technologies.weather.adapters.searchFragmentAdapters.SearchResultsAdapter
 import com.x.a_technologies.weather.databinding.FragmentSearchBinding
+import com.x.a_technologies.weather.datas.Constants
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
 class SearchFragment : Fragment(), SearchCallBack {
 
     lateinit var binding: FragmentSearchBinding
-    lateinit var api: API
     var clear = false
 
     override fun onCreateView(
@@ -37,7 +37,6 @@ class SearchFragment : Fragment(), SearchCallBack {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        instalizationURL()
 
         binding.enterCityName.requestFocus()
         val imm = requireContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -57,61 +56,63 @@ class SearchFragment : Fragment(), SearchCallBack {
             replaceFragment(EditLocationFragment())
         }
 
+        val callback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                replaceFragment(EditLocationFragment())
+            }
+        }
+
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner, callback)
+
+    }
+
+    fun getResults(cityName:String){
+        binding.progressBar.visibility = View.VISIBLE
+
+        PublicDatas.getCityLocationApi().getCityLocation(
+            Constants.HOST,
+            Constants.API_KEY_CITY_LOCATION,
+            Constants.limit,
+            Constants.type,
+            cityName).enqueue(object :Callback<List<CityLocation>>{
+            override fun onResponse(
+                call: Call<List<CityLocation>>,
+                response: Response<List<CityLocation>>
+            ) {
+                if (response.isSuccessful){
+                    if (clear){
+                        binding.rvSearchResults.adapter =
+                            SearchResultsAdapter(ArrayList(),this@SearchFragment)
+                    }else {
+                        binding.rvSearchResults.adapter =
+                            SearchResultsAdapter(response.body()!!,this@SearchFragment)
+                    }
+                }else{
+                    Toast.makeText(context, "No internet connection!", Toast.LENGTH_SHORT).show()
+                }
+                binding.progressBar.visibility = View.GONE
+            }
+
+            override fun onFailure(call: Call<List<CityLocation>>, t: Throwable) {
+                Toast.makeText(context, "No internet connection!", Toast.LENGTH_SHORT).show()
+                binding.progressBar.visibility = View.GONE
+            }
+
+        })
     }
 
     fun replaceFragment(fragment:Fragment){
         requireActivity().supportFragmentManager.beginTransaction().replace(R.id.fragmentConteiner,fragment).commit()
     }
 
-    fun instalizationURL(){
-        val retrofit = Retrofit.Builder()
-            .baseUrl(SettingsData.BASE_URL_CITY_LOCATION)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        api = retrofit.create(API::class.java)
-    }
-
-    fun getResults(cityName:String){
-        binding.progressBar.visibility = View.VISIBLE
-
-        api.getCityLocation(
-            SettingsData.HOST,
-            SettingsData.API_KEY_CITY_LOCATION,
-            SettingsData.limit,
-            SettingsData.type,
-            cityName).enqueue(object :Callback<List<CityLocation>>{
-            override fun onResponse(
-                call: Call<List<CityLocation>>,
-                response: Response<List<CityLocation>>
-            ) {
-                if (clear){
-                    binding.rvSearchResults.adapter = SearchResultsAdapter(ArrayList(),this@SearchFragment)
-                }else {
-                    binding.rvSearchResults.adapter = SearchResultsAdapter(response.body()!!,this@SearchFragment)
-                }
-
-                binding.progressBar.visibility = View.GONE
-            }
-
-            override fun onFailure(call: Call<List<CityLocation>>, t: Throwable) {
-
-            }
-
-        })
-    }
-
     override fun setFragment() {
-        write()
-        replaceFragment(EditLocationFragment())
+        PublicDatas.writeCityList()
+        if (PublicDatas.citiesList.size == 1){
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentConteinerIntro,IntroFragment()).commit()
+        }else {
+            replaceFragment(EditLocationFragment())
+        }
     }
 
-    fun write(){
-        val gson = Gson()
-        val infoJson = gson.toJson(SettingsData.citiesList)
-
-        val pref = requireActivity().getSharedPreferences(SettingsData.settingsFileName,MODE_PRIVATE)
-        val edit = pref.edit()
-        edit.putString(SettingsData.citiesDataKey,infoJson)
-        edit.apply()
-    }
 }

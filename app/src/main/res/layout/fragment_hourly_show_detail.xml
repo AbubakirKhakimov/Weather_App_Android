@@ -37,20 +37,21 @@
 
         </FrameLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/RVDetails"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="16dp"
-            android:orientation="horizontal"
-            tools:listitem="@layout/hourly_daily_detail_item_layout" />
+            android:background="#1F222E"
+            app:tabTextColor="@color/white"
+            app:tabMode="scrollable"
+            app:tabIndicatorColor="@color/white"
+            android:layout_marginTop="16dp"/>
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager2"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"/>
 
     </LinearLayout>
 

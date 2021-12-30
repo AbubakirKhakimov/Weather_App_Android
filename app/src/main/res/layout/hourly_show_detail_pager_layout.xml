@@ -14,7 +14,7 @@
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animationView"
             android:layout_width="100dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:layout_height="100dp"
             android:layout_gravity="center_horizontal"
             app:lottie_autoPlay="true"
@@ -54,18 +54,23 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Clouds"
+            android:layout_marginTop="16dp"
             android:textColor="@color/white"
             android:textSize="24sp"
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/RVDetails"
-            tools:listitem="@layout/hourly_show_detail_item_layout"
+            tools:listitem="@layout/hourly_daily_show_detail_item_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="32dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
+            android:padding="8dp"
+            android:background="@drawable/show_details_layout_backgraund"
             android:orientation="vertical"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="3" />

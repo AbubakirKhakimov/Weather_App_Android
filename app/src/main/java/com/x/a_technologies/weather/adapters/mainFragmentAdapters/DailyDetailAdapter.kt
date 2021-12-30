@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.x.a_technologies.weather.datas.DatasWeatherAPI.Daily
 import com.x.a_technologies.weather.databinding.HourlyDailyDetailItemLayoutBinding
+import java.text.DecimalFormat
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -23,7 +24,7 @@ class DailyDetailAdapter(val dailyWeatherList: MutableList<Daily>, val dailyAdap
         val item = dailyWeatherList[position]
         holder.binding.animationView.setAnimation("${item.weather[0].icon}.json")
         holder.binding.timeOrDate.text = getDateFormat(item.dt)
-        holder.binding.temp.text = item.temp.day.toInt().toString()
+        holder.binding.temp.text = getIntegerNumber(item.temp.day)
 
         holder.binding.clickableLayout.setOnClickListener {
             dailyAdapterCallBack.clickDaily(dailyWeatherList, position)
@@ -32,6 +33,10 @@ class DailyDetailAdapter(val dailyWeatherList: MutableList<Daily>, val dailyAdap
 
     override fun getItemCount(): Int {
         return dailyWeatherList.size
+    }
+
+    fun getIntegerNumber(num:Double):String{
+        return DecimalFormat("#").format(num)
     }
 
     fun getDateFormat(unixTime:Int):String{

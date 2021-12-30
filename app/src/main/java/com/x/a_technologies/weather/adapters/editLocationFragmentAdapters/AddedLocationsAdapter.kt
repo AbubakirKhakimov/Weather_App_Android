@@ -5,16 +5,13 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
-import com.x.a_technologies.weather.datas.SettingsData
+import com.x.a_technologies.weather.datas.PublicDatas
 import com.x.a_technologies.weather.R
 import com.x.a_technologies.weather.databinding.AddedLocationItemLayoutBinding
 
-interface LocationCallBack{
-    fun writeFile()
-}
-
-class AddedLocationsAdapter(val locationCallBack: LocationCallBack):RecyclerView.Adapter<AddedLocationsAdapter.ItemHolder>(),PopupMenu.OnMenuItemClickListener {
+class AddedLocationsAdapter():RecyclerView.Adapter<AddedLocationsAdapter.ItemHolder>(),PopupMenu.OnMenuItemClickListener {
     inner class ItemHolder(val binding: AddedLocationItemLayoutBinding):RecyclerView.ViewHolder(binding.root)
 
     private lateinit var context:Context
@@ -26,7 +23,7 @@ class AddedLocationsAdapter(val locationCallBack: LocationCallBack):RecyclerView
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        val item = SettingsData.citiesList[position]
+        val item = PublicDatas.citiesList[position]
         holder.binding.cityName.text = item.cityName
         holder.binding.cityAndCountryName.text = "${item.regionName}/${item.countryName}"
 
@@ -40,21 +37,32 @@ class AddedLocationsAdapter(val locationCallBack: LocationCallBack):RecyclerView
     }
 
     override fun getItemCount(): Int {
-        return SettingsData.citiesList.size
+        return PublicDatas.citiesList.size
     }
 
     override fun onMenuItemClick(item: MenuItem?): Boolean {
         when(item!!.itemId){
             R.id.makeMain -> {
-                SettingsData.citiesList.add(0,SettingsData.citiesList[popupPosition])
-                SettingsData.citiesList.removeAt(popupPosition+1)
+                PublicDatas.citiesList.add(0,PublicDatas.citiesList[popupPosition])
+                PublicDatas.citiesList.removeAt(popupPosition+1)
+                PublicDatas.weatherData.add(0,PublicDatas.weatherData[popupPosition])
+                PublicDatas.weatherData.removeAt(popupPosition+1)
+
+                notifyDataSetChanged()
+                PublicDatas.writeCityList()
             }
             R.id.delate -> {
-                SettingsData.citiesList.removeAt(popupPosition)
+                if (PublicDatas.citiesList.size == 1){
+                    Toast.makeText(context, "Leave at least one place!", Toast.LENGTH_SHORT).show()
+                }else{
+                    PublicDatas.citiesList.removeAt(popupPosition)
+                    PublicDatas.weatherData.removeAt(popupPosition)
+
+                    notifyDataSetChanged()
+                    PublicDatas.writeCityList()
+                }
             }
         }
-        notifyDataSetChanged()
-        locationCallBack.writeFile()
         return true
     }
 }

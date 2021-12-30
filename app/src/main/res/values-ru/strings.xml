@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Погода</string>
+    <string name="languagesListName">Язык</string>
+    <string name="englishLanguage">Английский</string>
+    <string name="russianLanguage">Русский</string>
+    <string name="day">День</string>
+    <string name="night">Ночь</string>
+    <string name="add_city">Добавьте любой город или регион</string>
+    <string name="enter_city_or_region_name">Введите название города или региона</string>
+    <string name="edit_location">Местоположение</string>
+    <string name="wind_speed">Скорость ветра</string>
+    <string name="wind_gust">Порыв ветра</string>
+    <string name="hourly_weather">Почасовая погода</string>
+    <string name="daily_weather">Ежедневная погода</string>
+    <string name="dew_point">Точка росы</string>
+    <string name="humidity">Влажность</string>
+    <string name="pressure">Давление</string>
+    <string name="cloudiness">Облачность</string>
+    <string name="uv_index">УФ-индекс</string>
+    <string name="visibility">Видимость</string>
+    <string name="sunrise">Восход</string>
+    <string name="sunset">Закат</string>
+    <string name="feels_like">Ощущается</string>
+    <string name="make_the_main">Сделать основной</string>
+    <string name="delate">Удалить</string>
+    <string name="notConnectionTitle">Соединение с сервером потеряно!</string>
+    <string name="notConnectionAdvice">Пожалуйста, проверьте ваше интернет-соединение и попробуйте еще раз!</string>
+</resources>

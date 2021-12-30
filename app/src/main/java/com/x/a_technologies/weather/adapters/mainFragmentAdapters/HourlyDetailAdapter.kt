@@ -14,7 +14,7 @@ interface HourlyAdapterCallBack{
     fun clickHourly(hourlyWeatherList: List<Hourly>, position:Int)
 }
 
-class HourlyDetailAdapter(val hourlyWeatherList:List<Hourly>, val hourlyAdapterCallBack: HourlyAdapterCallBack, var selectPosition:Int = -1):RecyclerView.Adapter<HourlyDetailAdapter.ItemHolder>() {
+class HourlyDetailAdapter(val hourlyWeatherList:List<Hourly>, val hourlyAdapterCallBack: HourlyAdapterCallBack):RecyclerView.Adapter<HourlyDetailAdapter.ItemHolder>() {
     inner class ItemHolder(val binding: HourlyDailyDetailItemLayoutBinding):RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
@@ -26,12 +26,6 @@ class HourlyDetailAdapter(val hourlyWeatherList:List<Hourly>, val hourlyAdapterC
         holder.binding.animationView.setAnimation("${item.weather[0].icon}.json")
         holder.binding.timeOrDate.text = getTimeFormat(item.dt)
         holder.binding.temp.text = getIntegerNumber(item.temp)
-
-        if (position == selectPosition){
-            holder.binding.selected.visibility = View.VISIBLE
-        }else{
-            holder.binding.selected.visibility = View.GONE
-        }
 
         holder.binding.clickableLayout.setOnClickListener {
             hourlyAdapterCallBack.clickHourly(hourlyWeatherList, position)

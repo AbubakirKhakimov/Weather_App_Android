@@ -1,11 +1,8 @@
 package com.x.a_technologies.weather.datas
 
-object SettingsData {
-
-    var citiesList = ArrayList<CitiesData>()
+object Constants {
 
     //File data
-    val settingsFileName = "SettingsFile"
     val citiesDataKey = "CitiesData"
 
     //Weather API settings
@@ -23,4 +20,5 @@ object SettingsData {
     val HOST = "spott.p.rapidapi.com"
     val limit = 10
     val type = "CITY"
+
 }

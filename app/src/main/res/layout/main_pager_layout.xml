@@ -67,6 +67,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:maxLines="1"
+                                android:text="5"
                                 android:textColor="@color/white"
                                 android:textSize="80sp"
                                 android:textStyle="bold" />
@@ -96,7 +97,6 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/RVCurrentDetail"
-                    tools:listitem="@layout/current_detail_item_layout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
@@ -104,7 +104,8 @@
                     android:layout_marginBottom="16dp"
                     android:orientation="vertical"
                     app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                    app:spanCount="4"/>
+                    app:spanCount="4"
+                    tools:listitem="@layout/current_detail_item_layout" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -120,6 +121,14 @@
                         app:lottie_fileName="wind.json"
                         app:lottie_loop="true" />
 
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="bottom"
+                        app:lottie_autoPlay="true"
+                        app:lottie_fileName="wind.json"
+                        app:lottie_loop="true" />
+
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
@@ -131,9 +140,9 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Wind speed"
+                            android:text="@string/wind_speed"
                             android:textColor="@color/white"
-                            android:textSize="10sp"
+                            android:textSize="11sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -155,9 +164,9 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Wind gust"
+                            android:text="@string/wind_gust"
                             android:textColor="@color/white"
-                            android:textSize="10sp"
+                            android:textSize="11sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -180,18 +189,18 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="8dp"
-                android:text="Hourly weather"
+                android:text="@string/hourly_weather"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/RVHourlyDetail"
-                tools:listitem="@layout/hourly_daily_detail_item_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/hourly_daily_detail_item_layout" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -199,19 +208,19 @@
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="8dp"
-                android:text="Daily weather"
+                android:text="@string/daily_weather"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/RVDailyDetail"
-                tools:listitem="@layout/hourly_daily_detail_item_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="32dp"
                 android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/hourly_daily_detail_item_layout" />
 
         </LinearLayout>
 

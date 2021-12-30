@@ -19,7 +19,7 @@
             android:layout_height="30dp"
             android:layout_gravity="center_vertical|left"
             android:layout_marginLeft="16dp"
-            android:src="@drawable/ic_baseline_edit_location_alt_24" />
+            android:src="@drawable/ic_edit_location" />
 
         <TextView
             android:id="@+id/cityName"
@@ -33,11 +33,12 @@
             android:layout_gravity="center"/>
 
         <ImageView
+            android:id="@+id/setLanguage"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="center_vertical|right"
             android:layout_marginRight="16dp"
-            android:src="@drawable/ic_baseline_settings_24" />
+            android:src="@drawable/ic_baseline_language_24" />
 
     </FrameLayout>
 

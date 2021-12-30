@@ -1,5 +1,28 @@
 <resources>
     <string name="app_name">Weather</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="languagesListName">Language</string>
+    <string name="englishLanguage">English</string>
+    <string name="russianLanguage">Russian</string>
+    <string name="day">Day</string>
+    <string name="feels_like">Feels like</string>
+    <string name="night">Night</string>
+    <string name="add_city">Add any city or region</string>
+    <string name="enter_city_or_region_name">Enter city or region name</string>
+    <string name="edit_location">Location</string>
+    <string name="wind_speed">Wind speed</string>
+    <string name="wind_gust">Wind gust</string>
+    <string name="hourly_weather">Hourly weather</string>
+    <string name="daily_weather">Daily weather</string>
+    <string name="dew_point">Dew point</string>
+    <string name="humidity">Humidity</string>
+    <string name="pressure">Pressure</string>
+    <string name="cloudiness">Cloudiness</string>
+    <string name="uv_index">UV index</string>
+    <string name="visibility">Visibility</string>
+    <string name="sunrise">Sunrise</string>
+    <string name="sunset">Sunset</string>
+    <string name="make_the_main">Make the main</string>
+    <string name="delate">Delate</string>
+    <string name="notConnectionTitle">Server connection lost!</string>
+    <string name="notConnectionAdvice">Please check your internet connection and try again!</string>
 </resources>
