@@ -29,7 +29,7 @@ class AddedLocationsAdapter():RecyclerView.Adapter<AddedLocationsAdapter.ItemHol
 
         holder.binding.moreFuns.setOnClickListener {
             popupPosition = position
-            val popup = PopupMenu(context,it)
+            val popup = PopupMenu(context, it)
             popup.setOnMenuItemClickListener(this)
             popup.inflate(R.menu.menu)
             popup.show()
